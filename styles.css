@@ -98,7 +98,10 @@ h3 { font-size: 1.3rem; }
 .benefit-card p { color: var(--muted); }
 
 .services { padding-top: 165px; text-align: center; }
-.service-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; text-align: left; }
+.service-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; text-align: left; }
+.service-card-text { display: flex; flex-direction: column; justify-content: flex-start; }
+.service-card-text h3 { margin: 10px 0 13px; }
+.service-card-text > a { margin-top: auto; }
 .service-card { min-width: 0; padding: 14px 14px 22px; border: 1px solid #2b2b2b; border-radius: 12px; background: var(--surface); }
 .service-image { height: 225px; position: relative; overflow: hidden; border-radius: 7px; background: #252525; }
 .service-image > img { width: 100%; height: 100%; object-fit: cover; }
@@ -112,6 +115,15 @@ h3 { font-size: 1.3rem; }
 .service-card > a { display: inline-flex; align-items: center; gap: 7px; margin-top: 17px; color: var(--accent); font-size: .9rem; font-weight: 650; }
 .service-card > a:hover, .service-note a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .service-note { max-width: 660px; margin: 50px auto 0; color: var(--muted); }
+
+.problems { padding-top: 165px; }
+.problem-panels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; text-align: left; }
+.problem-panel { min-width: 0; padding: 14px; border: 1px solid #2b2b2b; border-radius: 12px; background: var(--surface); }
+.problem-panel h3 { padding: 8px 10px 14px; color: var(--muted); font-size: .95rem; font-weight: 500; letter-spacing: 0; }
+.problem-panel-solution h3 { color: var(--accent); }
+.problem-item { display: flex; align-items: center; gap: 18px; min-height: 76px; margin-top: 10px; padding: 14px 18px; border-radius: 9px; background: #1d1d1d; color: #e4e4e4; font-size: .98rem; line-height: 1.45; }
+.problem-item .mark { flex: 0 0 38px; width: 38px; height: 38px; display: grid; place-items: center; border-radius: 9px; background: #262626; color: #8a8a8a; font-size: 1rem; }
+.problem-panel-solution .problem-item .mark { color: var(--accent); }
 .service-note a { display: inline-block; margin-left: 5px; color: var(--text); font-weight: 600; }
 
 .timings { padding-top: 145px; }
@@ -193,8 +205,7 @@ h3 { font-size: 1.3rem; }
   .project-grid { gap: 26px; }
   .project-column-offset { padding-top: 65px; }
   .benefit-grid { gap: 25px; }
-  .service-grid { grid-template-columns: 1fr 1fr; }
-  .service-card:last-child { grid-column: 1 / -1; max-width: 540px; margin-inline: auto; }
+  .problems { padding-top: 120px; }
   .timing-group { grid-template-columns: 1fr; gap: 16px; }
   .pricing { margin-top: 115px; padding: 52px 42px; }
   .plan-grid { gap: 40px; }
@@ -241,7 +252,10 @@ h3 { font-size: 1.3rem; }
   .benefit-card h3 { margin-bottom: 6px; font-size: 1.05rem; }
   .benefit-card p { font-size: .9rem; }
   .service-grid { grid-template-columns: 1fr; gap: 16px; }
-  .service-card:last-child { grid-column: auto; max-width: none; }
+  .problems { padding-top: 88px; }
+  .problem-panels { grid-template-columns: 1fr; gap: 16px; }
+  .problem-item { min-height: 0; padding: 12px 14px; font-size: .9rem; gap: 14px; }
+  .problem-item .mark { flex-basis: 32px; width: 32px; height: 32px; }
   .service-image { height: 215px; }
   .service-card h3 { margin-top: 20px; font-size: 1.15rem; }
   .service-card > p { font-size: .9rem; }
