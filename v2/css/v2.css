@@ -1,134 +1,259 @@
-/* v2: sistema de comportament propi (capa sobre ../styles.css).
-   Mobile-first a nivell de contenidor i capçalera. Punts de trencament:
+/* v2: sistema de comportament propi, autocontingut (sense ../styles.css).
+   Mobile-first. Punts de trencament:
    Mobile S <375 · Mobile M 375 · Mobile L 425 · Tablet 768 · Laptop 1024 · Laptop L 1440 · 4K 2560 */
 
+/* ---------- Tokens ---------- */
 :root {
-  /* Escala tipogràfica (fluid entre 320 px i 2560 px) */
-  --type-h1: clamp(2.4rem, 1.2rem + 4.2vw, 4.75rem);
-  --type-h2: clamp(1.9rem, 1.1rem + 2.6vw, 3.1rem);
-  --type-h3: clamp(1.15rem, 1rem + .6vw, 1.5rem);
-  --type-body: clamp(.95rem, .9rem + .2vw, 1.125rem);
+  --bg: #111111;
+  --surface: #181818;
+  --line: #2b2b2b;
+  --text: #f4f4f4;
+  --muted: #a3a3a3;
+  --accent: #cefe5e;
 
-  /* Espaiat i contenidor */
+  --type-h1: clamp(2.2rem, 1.2rem + 4vw, 4.5rem);
+  --type-h2: clamp(1.7rem, 1.1rem + 2.4vw, 3rem);
+  --type-h3: clamp(1.1rem, 1rem + .5vw, 1.4rem);
+  --type-body: clamp(.95rem, .9rem + .2vw, 1.1rem);
+
   --gutter: 20px;
   --container: 1280px;
-  --header-h: 84px;
-  --header-h-compact: 64px;
+  --block-gap: 72px;
+  --header-h: 72px;
+  --header-h-compact: 56px;
 
-  /* Moviment */
   --dur-fast: 180ms;
   --dur: 280ms;
   --ease: cubic-bezier(.2, .7, .2, 1);
 }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--header-h) + 12px);
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 12px); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  font-size: var(--type-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-}
-
-/* Contenidor per punt de trencament */
-.wrap { width: min(var(--container), calc(100% - 2 * var(--gutter))); }
-
-@media (min-width: 768px) {
-  :root { --gutter: 32px; }
-}
-
-@media (min-width: 1024px) {
-  :root { --container: 1200px; }
-}
-
-@media (min-width: 1440px) {
-  :root { --container: 1360px; --header-h: 92px; }
-}
-
-@media (min-width: 2560px) {
-  :root { --container: 1760px; --header-h: 104px; }
-}
-
-/* Mobile S: títols una mica més petits */
-@media (max-width: 374px) {
-  :root { --gutter: 16px; }
-}
-
-/* Tipografia */
+h1, h2, h3, p, ul, ol, figure, blockquote { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+a { color: inherit; text-decoration: none; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 3px; }
+h1, h2, h3 { line-height: 1.12; letter-spacing: -.03em; }
 h1 { font-size: var(--type-h1); }
 h2 { font-size: var(--type-h2); }
 h3 { font-size: var(--type-h3); }
-body { font-size: var(--type-body); }
 
-/* Capçalera: transparent sobre el hero, sòlida en fer scroll */
-.site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 50;
-  min-height: var(--header-h);
-  background: transparent;
-  transition:
-    min-height var(--dur) var(--ease),
-    background-color var(--dur) var(--ease),
-    border-color var(--dur) var(--ease);
-  border-bottom: 1px solid transparent;
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; }
 }
 
+.wrap { width: min(var(--container), calc(100% - 2 * var(--gutter))); margin-inline: auto; }
+.block { padding-top: var(--block-gap); }
+.block-head { margin-bottom: 36px; max-width: 760px; }
+.kicker { color: var(--accent); font-size: .85rem; font-weight: 650; letter-spacing: .02em; margin-bottom: 10px; }
+.intro { color: var(--muted); margin-top: 14px; }
+
+/* ---------- Placeholders ---------- */
+.ph {
+  display: grid;
+  place-items: center;
+  background: repeating-linear-gradient(135deg, #1c1c1c 0 10px, #202020 10px 20px);
+  border: 1px dashed #3a3a3a;
+  border-radius: 10px;
+  color: #6b6b6b;
+  font-size: .8rem;
+  text-align: center;
+  padding: 8px;
+}
+.ph-logo { min-width: 96px; min-height: 36px; padding: 4px 10px; border-radius: 6px; }
+.ph-logo-item { min-height: 72px; }
+.ph-hero { aspect-ratio: 16 / 10; width: 100%; }
+.ph-card { aspect-ratio: 4 / 3; width: 100%; margin-bottom: 18px; }
+.ph-work { aspect-ratio: 4 / 3; width: 100%; margin-bottom: 14px; }
+.ph-avatar { width: 44px; height: 44px; border-radius: 50%; flex: 0 0 44px; }
+.ph-avatar-lg { aspect-ratio: 1 / 1; width: 100%; max-width: 260px; border-radius: 50%; }
+
+/* ---------- Botons i enllaços ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: .92rem;
+  font-weight: 600;
+  transition: transform var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0) scale(.98); }
+.btn-primary { background: var(--accent); color: #151811; }
+.btn-primary:hover { background: #dfff8b; }
+.btn-ghost { border-color: #3a3a3a; color: var(--text); background: transparent; }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.link { color: var(--accent); font-weight: 600; font-size: .92rem; transition: letter-spacing var(--dur) var(--ease); }
+.link:hover { letter-spacing: .02em; }
+
+/* ---------- Capçalera ---------- */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.site-header-inner {
+  min-height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transition: min-height var(--dur) var(--ease);
+}
 .site-header.is-scrolled {
-  min-height: var(--header-h-compact);
   background: rgba(17, 17, 17, .86);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-bottom-color: var(--line);
 }
+.site-header.is-scrolled .site-header-inner { min-height: var(--header-h-compact); }
 
-/* La capçalera fixa desplaça el contingut: la primera secció ja té padding propi */
-main { padding-top: 0; }
-
-/* Navegació: subratllat en hover i enllaç seleccionat */
-.main-nav a {
-  position: relative;
-  padding: 6px 0;
-  transition: color var(--dur-fast) var(--ease);
-}
-
+.main-nav { display: flex; align-items: center; gap: 4px 20px; flex-wrap: wrap; font-size: .9rem; color: #c2c2c2; }
+.main-nav a { position: relative; padding: 6px 0; transition: color var(--dur-fast) var(--ease); }
 .main-nav a::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  left: 0; right: 0; bottom: 0;
   height: 1px;
   background: currentColor;
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform var(--dur) var(--ease);
 }
+.main-nav a:hover { color: var(--text); }
+.main-nav a:hover::after, .main-nav a[aria-current="true"]::after { transform: scaleX(1); }
+.main-nav a[aria-current="true"] { color: var(--accent); }
+.main-nav .nav-cta { padding: 8px 16px; border: 1px solid var(--accent); border-radius: 999px; color: var(--text); }
+.main-nav .nav-cta::after { display: none; }
+.main-nav .nav-cta:hover { background: rgba(206, 254, 94, .1); }
 
-.main-nav a:hover::after,
-.main-nav a[aria-current="true"]::after {
-  transform: scaleX(1);
+/* ---------- Hero ---------- */
+.hero { display: grid; gap: 32px; align-items: center; padding-top: calc(var(--header-h) + 32px); }
+.eyebrow { color: var(--accent); font-size: .85rem; font-weight: 650; margin-bottom: 14px; }
+.hero h1 { max-width: 16ch; }
+.lead { color: var(--muted); font-size: clamp(1rem, .95rem + .3vw, 1.2rem); margin: 18px 0 26px; max-width: 52ch; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* ---------- Clients ---------- */
+.logos { padding-top: 48px; }
+.logos .kicker { color: var(--muted); text-align: center; margin-bottom: 18px; }
+.logo-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.logo-row li { list-style: none; }
+
+/* ---------- Graelles ---------- */
+.grid { display: grid; gap: 20px; }
+.card, .panel, .step, .quote { min-width: 0; }
+.card h3 { margin-bottom: 8px; }
+.card p, .panel p, .step p { color: var(--muted); font-size: .95rem; }
+.card .link { display: inline-block; margin-top: 14px; }
+.tag { color: var(--muted); font-size: .8rem; margin-bottom: 6px; }
+.panel { padding: 26px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.panel h3 { margin-bottom: 10px; }
+.panel .btn { margin-top: 18px; }
+.price-placeholder { color: #6b6b6b; font-size: .85rem; margin-top: 14px; }
+.step { padding: 24px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.step-num { display: block; color: var(--accent); font-weight: 700; margin-bottom: 14px; }
+.step h3 { margin-bottom: 8px; }
+
+/* ---------- Testimonis, sobre, FAQ ---------- */
+.quote { padding: 26px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.quote blockquote { font-size: clamp(1rem, .95rem + .3vw, 1.2rem); margin-bottom: 20px; }
+.quote figcaption { display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: .9rem; }
+.about { display: grid; gap: 28px; align-items: center; }
+.about p { color: var(--muted); margin-top: 14px; max-width: 60ch; }
+.about h2 { margin-top: 6px; }
+.faq { border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { min-height: 60px; display: flex; align-items: center; cursor: pointer; font-weight: 600; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq details p { color: var(--muted); padding: 0 0 18px; }
+
+/* ---------- CTA final i peu ---------- */
+.cta { margin-top: var(--block-gap); padding: 56px 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); text-align: center; }
+.cta p { color: var(--muted); margin: 12px auto 24px; max-width: 52ch; }
+.site-footer { display: grid; gap: 18px; padding-block: 56px 32px; border-top: 1px solid var(--line); margin-top: var(--block-gap); }
+.footer-nav { display: flex; flex-wrap: wrap; gap: 10px 22px; color: #c2c2c2; font-size: .9rem; }
+.copyright { color: #6b6b6b; font-size: .8rem; }
+
+/* ===================================================
+   Punts de trencament
+   =================================================== */
+
+/* Mobile S: marges i títols una mica més compactes */
+@media (max-width: 374px) {
+  :root { --gutter: 16px; --block-gap: 56px; }
+  .main-nav { gap: 2px 14px; font-size: .82rem; }
 }
 
-.main-nav a[aria-current="true"] {
-  color: var(--accent);
+/* Mobile M i L (375–767): la navegació es parteix en dues línies */
+@media (min-width: 425px) {
+  .logo-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
-/* Botons: estats hover i focus coherents */
-.button {
-  transition:
-    transform var(--dur-fast) var(--ease),
-    background-color var(--dur-fast) var(--ease),
-    border-color var(--dur-fast) var(--ease),
-    color var(--dur-fast) var(--ease);
+/* Tablet 768: dues columnes per a serveis i treballs */
+@media (min-width: 768px) {
+  :root { --gutter: 32px; --block-gap: 96px; --header-h: 80px; --header-h-compact: 60px; }
+  .hero { grid-template-columns: 1.05fr .95fr; gap: 48px; }
+  .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .about { grid-template-columns: 240px 1fr; }
+  .logo-row { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .cta { padding: 72px 32px; }
 }
 
-.button:active { transform: translateY(0) scale(.98); }
+/* Laptop 1024: tres columnes per a serveis */
+@media (min-width: 1024px) {
+  .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .hero { gap: 64px; }
+}
 
-/* Mòbil: la navegació no ha de trencar la capçalera */
+/* Laptop L 1440: més aire i contenidor més ample */
+@media (min-width: 1440px) {
+  :root { --container: 1360px; --header-h: 88px; --header-h-compact: 64px; --block-gap: 120px; }
+  .block-head { margin-bottom: 48px; }
+}
+
+/* 4K 2560: el contingut es manté a una amplada llegible */
+@media (min-width: 2560px) {
+  :root { --container: 1760px; --header-h: 104px; --header-h-compact: 76px; --block-gap: 160px; }
+  .block-head { max-width: 920px; }
+}
+
+/* Mobile: capçalera d'una sola fila; la navegació es desplaça en horitzontal */
 @media (max-width: 620px) {
-  .site-header.is-scrolled { min-height: var(--header-h-compact); }
   .main-nav a::after { display: none; }
+  .site-header-inner { flex-wrap: nowrap; min-width: 0; gap: 12px; }
+  .brand { flex: 0 0 auto; }
+  .main-nav {
+    flex: 1 1 auto;
+    min-width: 0;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    gap: 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+  .main-nav::-webkit-scrollbar { display: none; }
+  .main-nav .nav-cta { padding: 6px 12px; }
 }
