@@ -1,0 +1,134 @@
+/* v2: sistema de comportament propi (capa sobre ../styles.css).
+   Mobile-first a nivell de contenidor i capçalera. Punts de trencament:
+   Mobile S <375 · Mobile M 375 · Mobile L 425 · Tablet 768 · Laptop 1024 · Laptop L 1440 · 4K 2560 */
+
+:root {
+  /* Escala tipogràfica (fluid entre 320 px i 2560 px) */
+  --type-h1: clamp(2.4rem, 1.2rem + 4.2vw, 4.75rem);
+  --type-h2: clamp(1.9rem, 1.1rem + 2.6vw, 3.1rem);
+  --type-h3: clamp(1.15rem, 1rem + .6vw, 1.5rem);
+  --type-body: clamp(.95rem, .9rem + .2vw, 1.125rem);
+
+  /* Espaiat i contenidor */
+  --gutter: 20px;
+  --container: 1280px;
+  --header-h: 84px;
+  --header-h-compact: 64px;
+
+  /* Moviment */
+  --dur-fast: 180ms;
+  --dur: 280ms;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 12px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Contenidor per punt de trencament */
+.wrap { width: min(var(--container), calc(100% - 2 * var(--gutter))); }
+
+@media (min-width: 768px) {
+  :root { --gutter: 32px; }
+}
+
+@media (min-width: 1024px) {
+  :root { --container: 1200px; }
+}
+
+@media (min-width: 1440px) {
+  :root { --container: 1360px; --header-h: 92px; }
+}
+
+@media (min-width: 2560px) {
+  :root { --container: 1760px; --header-h: 104px; }
+}
+
+/* Mobile S: títols una mica més petits */
+@media (max-width: 374px) {
+  :root { --gutter: 16px; }
+}
+
+/* Tipografia */
+h1 { font-size: var(--type-h1); }
+h2 { font-size: var(--type-h2); }
+h3 { font-size: var(--type-h3); }
+body { font-size: var(--type-body); }
+
+/* Capçalera: transparent sobre el hero, sòlida en fer scroll */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  min-height: var(--header-h);
+  background: transparent;
+  transition:
+    min-height var(--dur) var(--ease),
+    background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+  border-bottom: 1px solid transparent;
+}
+
+.site-header.is-scrolled {
+  min-height: var(--header-h-compact);
+  background: rgba(17, 17, 17, .86);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom-color: var(--line);
+}
+
+/* La capçalera fixa desplaça el contingut: la primera secció ja té padding propi */
+main { padding-top: 0; }
+
+/* Navegació: subratllat en hover i enllaç seleccionat */
+.main-nav a {
+  position: relative;
+  padding: 6px 0;
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur) var(--ease);
+}
+
+.main-nav a:hover::after,
+.main-nav a[aria-current="true"]::after {
+  transform: scaleX(1);
+}
+
+.main-nav a[aria-current="true"] {
+  color: var(--accent);
+}
+
+/* Botons: estats hover i focus coherents */
+.button {
+  transition:
+    transform var(--dur-fast) var(--ease),
+    background-color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease);
+}
+
+.button:active { transform: translateY(0) scale(.98); }
+
+/* Mòbil: la navegació no ha de trencar la capçalera */
+@media (max-width: 620px) {
+  .site-header.is-scrolled { min-height: var(--header-h-compact); }
+  .main-nav a::after { display: none; }
+}
