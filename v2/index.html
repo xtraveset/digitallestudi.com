@@ -4,219 +4,148 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
-  <title>v2 · Prova responsive · Digitall Estudi</title>
+  <title>Digitall Estudi · v2</title>
   <link rel="stylesheet" href="css/v2.css">
 </head>
 <body>
-  <header class="site-header">
+  <header class="site-header" id="capcalera">
     <div class="wrap site-header-inner">
-      <a class="brand" href="#inici" aria-label="Inici">
-        <span class="ph ph-logo" aria-hidden="true">Logo</span>
+      <a class="brand" href="#inici" aria-label="Digitall Estudi, inici">
+        <img src="../assets/Símbol-negative.svg" alt="" width="36" height="36">
+        <span class="brand-name">digitall<sup>®</sup></span>
       </a>
-      <nav class="main-nav" aria-label="Navegació principal">
-        <a href="#serveis">Serveis</a>
-        <a href="#projectes">Projectes</a>
-        <a href="#proces">Procés</a>
-        <a href="#sobre">Sobre</a>
-        <a class="nav-cta" href="#contacte">Contacte</a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Navegació principal" data-nav>
+        <a href="#estudi" data-ca="L'estudi" data-es="El estudio">L'estudi</a>
+        <a href="#treballs" data-ca="Treballs" data-es="Trabajos">Treballs</a>
+        <a href="#preus" data-ca="Preus" data-es="Precios">Preus</a>
+        <a href="#projectes" data-ca="Projectes" data-es="Proyectos">Projectes</a>
       </nav>
+
+      <div class="header-tools">
+        <button class="lang-switch" type="button" role="switch" aria-checked="true" id="lang-switch">
+          <span class="lang-track" aria-hidden="true"><span class="lang-dot"></span></span>
+          <span class="lang-label" data-ca="Català" data-es="Castellano">Català</span>
+        </button>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu>
+          <span data-ca="Menú" data-es="Menú">Menú</span>
+        </button>
+      </div>
     </div>
   </header>
 
   <main>
-    <section class="hero wrap" id="inici">
-      <div class="hero-copy">
-        <p class="eyebrow">Etiqueta curta</p>
-        <h1>Titular de resultat per al client ideal</h1>
-        <p class="lead">Subtítol de placeholder: una o dues frases que expliquen per a qui és el servei i què aconsegueix.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="#contacte">Botó principal</a>
-          <a class="btn btn-ghost" href="#serveis">Botó secundari</a>
-        </div>
+    <section class="hero wrap" id="inici" aria-labelledby="hero-title">
+      <p class="greeting">
+        <span class="greeting-text" data-greeting>Bon dia</span>
+        <span class="sep" aria-hidden="true">·</span>
+        <time id="clock" datetime="">--:--</time>
+        <span class="sep" aria-hidden="true">·</span>
+        <a class="place" href="https://www.google.com/maps/search/?api=1&amp;query=Vilanova+i+la+Geltru" data-place>Vilanova i la Geltrú</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <span id="temp">--º</span>
+      </p>
+      <h1 id="hero-title" class="wordmark">digitall<sup>®</sup> <span class="wordmark-sub" data-ca="Estudi de disseny" data-es="Estudio de diseño">Estudi de disseny</span></h1>
+      <p class="hero-lead" data-ca="Disseny visual de primer nivell, entregat en setmanes i no en mesos." data-es="Diseño visual de primer nivel, entregado en semanas y no en meses.">Disseny visual de primer nivell, entregat en setmanes i no en mesos.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="mailto:hola@digitallestudi.com?subject=Iniciar%20un%20projecte" data-ca="Iniciar un projecte" data-es="Iniciar un proyecto">Iniciar un projecte</a>
+        <a class="btn btn-ghost" href="mailto:hola@digitallestudi.com?subject=Missatge%20r%C3%A0pid" data-ca="Missatge ràpid" data-es="Mensaje rápido">Missatge ràpid</a>
       </div>
-      <div class="ph ph-hero" aria-hidden="true">Imatge principal · 16:9</div>
     </section>
 
-    <section class="logos wrap" aria-label="Clients">
-      <p class="kicker">Text introductori de clients</p>
-      <ul class="logo-row">
-        <li class="ph ph-logo-item">Logo 1</li>
-        <li class="ph ph-logo-item">Logo 2</li>
-        <li class="ph ph-logo-item">Logo 3</li>
-        <li class="ph ph-logo-item">Logo 4</li>
-        <li class="ph ph-logo-item">Logo 5</li>
-        <li class="ph ph-logo-item">Logo 6</li>
+    <section class="block wrap" id="treballs" aria-labelledby="clients-title">
+      <h2 class="label" id="clients-title" data-ca="Clients anteriors" data-es="Clientes anteriores">Clients anteriors</h2>
+      <ul class="client-grid">
+        <li><span>APP Samplia</span></li>
+        <li><span>Travel with Gastón</span></li>
+        <li><span>Video Ask</span></li>
+        <li><span>AKKO Building</span></li>
+        <li><span>ABT Software</span></li>
+        <li><span>Obra Plan</span></li>
+        <li><span>Tatami Fijo K1</span></li>
+        <li><span>Encarna Martín</span></li>
+        <li><span>AKKO Services</span></li>
+        <li><span>MSH Service</span></li>
+        <li><span>Agroplanning</span></li>
+        <li><span>Krieger AG</span></li>
+        <li><span>Avito immoneuf</span></li>
+        <li><span>Tinvex</span></li>
+        <li><a href="#contacte" data-ca="El teu projecte →" data-es="Tu proyecto →">El teu projecte →</a></li>
       </ul>
     </section>
 
-    <section class="block wrap" id="serveis" aria-labelledby="serveis-title">
-      <header class="block-head">
-        <p class="kicker">Serveis</p>
-        <h2 id="serveis-title">Títol de la secció de serveis</h2>
-        <p class="intro">Text introductori de placeholder per a la secció de serveis.</p>
-      </header>
-      <div class="grid grid-3">
-        <article class="card">
-          <div class="ph ph-card" aria-hidden="true">Imatge 4:3</div>
-          <h3>Servei 1</h3>
-          <p>Descripció breu de placeholder, en dues o tres línies.</p>
-          <a class="link" href="#contacte">Més informació →</a>
-        </article>
-        <article class="card">
-          <div class="ph ph-card" aria-hidden="true">Imatge 4:3</div>
-          <h3>Servei 2</h3>
-          <p>Descripció breu de placeholder, en dues o tres línies.</p>
-          <a class="link" href="#contacte">Més informació →</a>
-        </article>
-        <article class="card">
-          <div class="ph ph-card" aria-hidden="true">Imatge 4:3</div>
-          <h3>Servei 3</h3>
-          <p>Descripció breu de placeholder, en dues o tres línies.</p>
-          <a class="link" href="#contacte">Més informació →</a>
-        </article>
+    <section class="block wrap" id="estudi" aria-labelledby="exp-title">
+      <div class="split-head">
+        <h2 class="label" id="exp-title" data-ca="Experiència" data-es="Experiencia">Experiència</h2>
+        <a class="link" href="#" data-ca="LinkedIn ↗" data-es="LinkedIn ↗">LinkedIn ↗</a>
       </div>
-    </section>
-
-    <section class="block wrap" aria-labelledby="inici-title">
-      <header class="block-head">
-        <p class="kicker">Per on començar</p>
-        <h2 id="inici-title">Dos punts d'entrada</h2>
-      </header>
-      <div class="grid grid-2">
-        <article class="panel">
-          <h3>Auditoria inicial</h3>
-          <p>Descripció de placeholder de l'auditoria: què inclou, quant dura i quin resultat obté el client.</p>
-          <p class="price-placeholder">[Preu o durada per definir]</p>
-          <a class="btn btn-ghost" href="#contacte">Botó de l'auditoria</a>
-        </article>
-        <article class="panel">
-          <h3>Com treballem</h3>
-          <p>Text de placeholder sobre el procés de treball, en dues o tres línies.</p>
-          <a class="btn btn-ghost" href="#proces">Veure el procés</a>
-        </article>
-      </div>
-    </section>
-
-    <section class="block wrap" id="projectes" aria-labelledby="projectes-title">
-      <header class="block-head">
-        <p class="kicker">Projectes</p>
-        <h2 id="projectes-title">Treballs destacats</h2>
-      </header>
-      <div class="grid grid-2 grid-work">
-        <article class="card">
-          <div class="ph ph-work" aria-hidden="true">Imatge del projecte · 4:3</div>
-          <p class="tag">Sector · Serveis</p>
-          <h3>Nom del projecte 1</h3>
-          <p>Resultat o descripció breu de placeholder.</p>
-        </article>
-        <article class="card">
-          <div class="ph ph-work" aria-hidden="true">Imatge del projecte · 4:3</div>
-          <p class="tag">Sector · Serveis</p>
-          <h3>Nom del projecte 2</h3>
-          <p>Resultat o descripció breu de placeholder.</p>
-        </article>
-        <article class="card">
-          <div class="ph ph-work" aria-hidden="true">Imatge del projecte · 4:3</div>
-          <p class="tag">Sector · Serveis</p>
-          <h3>Nom del projecte 3</h3>
-          <p>Resultat o descripció breu de placeholder.</p>
-        </article>
-        <article class="card">
-          <div class="ph ph-work" aria-hidden="true">Imatge del projecte · 4:3</div>
-          <p class="tag">Sector · Serveis</p>
-          <h3>Nom del projecte 4</h3>
-          <p>Resultat o descripció breu de placeholder.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="block wrap" id="proces" aria-labelledby="proces-title">
-      <header class="block-head">
-        <p class="kicker">Procés</p>
-        <h2 id="proces-title">Tres passos</h2>
-      </header>
-      <ol class="grid grid-3 steps">
-        <li class="step">
-          <span class="step-num">01</span>
-          <h3>Pas 1</h3>
-          <p>Descripció de placeholder del primer pas.</p>
+      <ol class="timeline">
+        <li>
+          <span class="ph ph-logo-sm" aria-hidden="true"></span>
+          <div><strong>digitall</strong><span data-ca="Fundador" data-es="Fundador">Fundador</span></div>
+          <time>2023 – <span data-ca="Actualitat" data-es="Actualidad">Actualitat</span></time>
         </li>
-        <li class="step">
-          <span class="step-num">02</span>
-          <h3>Pas 2</h3>
-          <p>Descripció de placeholder del segon pas.</p>
+        <li>
+          <span class="ph ph-logo-sm" aria-hidden="true"></span>
+          <div><strong>Talenom</strong><span>Senior UX/UI Product Designer</span></div>
+          <time>2023 – 2024</time>
         </li>
-        <li class="step">
-          <span class="step-num">03</span>
-          <h3>Pas 3</h3>
-          <p>Descripció de placeholder del tercer pas.</p>
+        <li>
+          <span class="ph ph-logo-sm" aria-hidden="true"></span>
+          <div><strong>Video Ask</strong><span>Staff Designer</span></div>
+          <time>2022 – 2023</time>
+        </li>
+        <li>
+          <span class="ph ph-logo-sm" aria-hidden="true"></span>
+          <div><strong>Adevinta</strong><span>UX Designer</span></div>
+          <time>2017 – 2022</time>
         </li>
       </ol>
     </section>
 
-    <section class="block wrap" aria-labelledby="testimonis-title">
-      <header class="block-head">
-        <p class="kicker">Testimonis</p>
-        <h2 id="testimonis-title">Què diuen els clients</h2>
-      </header>
-      <div class="grid grid-2">
-        <figure class="quote">
-          <blockquote>Cita de placeholder d'un client, en una o dues frases.</blockquote>
-          <figcaption>
-            <span class="ph ph-avatar" aria-hidden="true"></span>
-            <span>Nom del client · Càrrec, empresa</span>
-          </figcaption>
-        </figure>
-        <figure class="quote">
-          <blockquote>Cita de placeholder d'un segon client, en una o dues frases.</blockquote>
-          <figcaption>
-            <span class="ph ph-avatar" aria-hidden="true"></span>
-            <span>Nom del client · Càrrec, empresa</span>
-          </figcaption>
-        </figure>
+    <section class="block" id="preus" aria-label="Preus i manteniment">
+      <p class="placeholder-note" data-ca="Secció de preus: pendent de la pàgina de Serveis." data-es="Sección de precios: pendiente de la página de Servicios.">Secció de preus: pendent de la pàgina de Serveis.</p>
+    </section>
+
+    <section class="block" id="projectes" aria-label="Projectes">
+      <p class="placeholder-note" data-ca="Projectes: pendent de la pàgina de Projectes." data-es="Proyectos: pendiente de la página de Proyectos.">Projectes: pendent de la pàgina de Projectes.</p>
+    </section>
+
+    <section class="block wrap" aria-labelledby="rev-title">
+      <h2 class="label" id="rev-title" data-ca="Ressenyes de Google" data-es="Reseñas de Google">Ressenyes de Google</h2>
+      <div class="reviews" tabindex="0" aria-label="Ressenyes de Google">
+        <article class="review">
+          <p class="review-text">[Text de la ressenya]</p>
+          <footer><strong>Gonzalo Gastón</strong><span>Founder · Travel with Gastón</span></footer>
+        </article>
+        <article class="review">
+          <p class="review-text">[Text de la ressenya]</p>
+          <footer><strong>Jose Luis Cebria</strong><span>Co-founder · Tinvex</span></footer>
+        </article>
+        <article class="review">
+          <p class="review-text">[Text de la ressenya]</p>
+          <footer><strong>Ira Lucas</strong><span>Sales &amp; Business · Krieger AG</span></footer>
+        </article>
+        <article class="review">
+          <p class="review-text">[Text de la ressenya]</p>
+          <footer><strong>Tatami Fijo K1 MMA</strong><span>Empresa</span></footer>
+        </article>
+        <article class="review">
+          <p class="review-text">[Text de la ressenya]</p>
+          <footer><strong>Encarna Martín</strong><span>Terapeuta infantil</span></footer>
+        </article>
       </div>
     </section>
 
-    <section class="block wrap" id="sobre" aria-labelledby="sobre-title">
-      <div class="about">
-        <div class="ph ph-avatar-lg" aria-hidden="true">Foto</div>
-        <div>
-          <p class="kicker">Sobre Digitall</p>
-          <h2 id="sobre-title">Títol de la secció sobre</h2>
-          <p>Paràgraf de placeholder sobre qui està darrere de l'estudi i com treballa.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="block wrap" aria-labelledby="faq-title">
-      <header class="block-head">
-        <p class="kicker">FAQ</p>
-        <h2 id="faq-title">Preguntes freqüents</h2>
-      </header>
-      <div class="faq">
-        <details><summary>Pregunta de placeholder 1?</summary><p>Resposta de placeholder.</p></details>
-        <details><summary>Pregunta de placeholder 2?</summary><p>Resposta de placeholder.</p></details>
-        <details><summary>Pregunta de placeholder 3?</summary><p>Resposta de placeholder.</p></details>
-        <details><summary>Pregunta de placeholder 4?</summary><p>Resposta de placeholder.</p></details>
-      </div>
-    </section>
-
-    <section class="cta wrap" id="contacte" aria-labelledby="cta-title">
-      <h2 id="cta-title">Títol de l'acció final</h2>
-      <p>Text de placeholder que convida a contactar.</p>
-      <a class="btn btn-primary" href="mailto:hola@digitallestudi.com">Botó final</a>
+    <section class="block wrap contact" id="contacte" aria-labelledby="contact-title">
+      <p class="label" data-ca="Per a noves consultes:" data-es="Para nuevas consultas:">Per a noves consultes:</p>
+      <a class="contact-email" href="mailto:hola@digitallestudi.com">hola@digitallestudi.com</a>
     </section>
   </main>
 
   <footer class="site-footer wrap">
-    <span class="ph ph-logo" aria-hidden="true">Logo</span>
-    <nav class="footer-nav" aria-label="Peu de pàgina">
-      <a href="#serveis">Serveis</a>
-      <a href="#projectes">Projectes</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#contacte">Contacte</a>
-    </nav>
-    <p class="copyright">© 2026 Digitall Estudi · Placeholder</p>
+    <span class="brand-name">digitall<sup>®</sup></span>
+    <p class="copyright">© 2026 Digitall Estudi</p>
   </footer>
 
   <script src="js/v2.js" defer></script>
