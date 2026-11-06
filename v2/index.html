@@ -5,10 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
   <title>Digitall Estudi · v2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Urbanist:wght@700;900&display=swap">
   <link rel="stylesheet" href="css/v2.css">
 </head>
 <body>
-  <header class="site-header" id="capcalera">
+  <header class="site-header" id="capcalera" data-nav="off">
     <div class="wrap site-header-inner">
       <a class="brand" href="#inici" aria-label="Digitall Estudi, inici">
         <img src="../assets/Símbol-negative.svg" alt="" width="36" height="36">
@@ -27,7 +30,7 @@
           <span class="lang-track" aria-hidden="true"><span class="lang-dot"></span></span>
           <span class="lang-label" data-ca="Català" data-es="Castellano">Català</span>
         </button>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu disabled aria-disabled="true" title="Menú pendent d'activar">
           <span data-ca="Menú" data-es="Menú">Menú</span>
         </button>
       </div>
@@ -41,12 +44,13 @@
         <span class="sep" aria-hidden="true">·</span>
         <time id="clock" datetime="">--:--</time>
         <span class="sep" aria-hidden="true">·</span>
-        <a class="place" href="https://www.google.com/maps/search/?api=1&amp;query=Vilanova+i+la+Geltru" data-place>Vilanova i la Geltrú</a>
+        <a class="place" href="https://www.google.com/maps/search/?api=1&amp;query=Rambla+de+l%27Exposici%C3%B3+59%2C+Edifici+Neapolis%2C+08800+Vilanova+i+la+Geltr%C3%BA" data-place>Vilanova i la Geltrú</a>
         <span class="sep" aria-hidden="true">·</span>
         <span id="temp">--º</span>
       </p>
-      <h1 id="hero-title" class="wordmark">digitall<sup>®</sup> <span class="wordmark-sub" data-ca="Estudi de disseny" data-es="Estudio de diseño">Estudi de disseny</span></h1>
-      <p class="hero-lead" data-ca="Disseny visual de primer nivell, entregat en setmanes i no en mesos." data-es="Diseño visual de primer nivel, entregado en semanas y no en meses.">Disseny visual de primer nivell, entregat en setmanes i no en mesos.</p>
+      <h1 id="hero-title" class="wordmark"><span class="wordmark-brand">digitall<sup>®</sup></span> <span class="wordmark-sub" data-ca="Estudi de disseny" data-es="Estudio de diseño">Estudi de disseny</span></h1>
+      <p class="hero-lead" data-ca="Disseny visual de classe mundial, entregat en setmanes, no mesos." data-es="Diseño visual de clase mundial, entregado en semanas, no meses.">Disseny visual de classe mundial, entregat en setmanes, no mesos.</p>
+      <p class="hero-body" data-ca="Des de llocs web de màrqueting destacats fins a interfícies de producte refinades, el nostre treball se centra en una execució acurada i un compromís profund amb la qualitat. Si això et ressona, ens encantaria saber més sobre el que estàs creant." data-es="Desde sitios web de marketing destacados hasta interfaces de producto refinadas, nuestro trabajo se centra en una ejecución cuidadosa y un profundo compromiso con la calidad. Si esto te resuena, nos encantaría saber más sobre lo que estás creando.">Des de llocs web de màrqueting destacats fins a interfícies de producte refinades, el nostre treball se centra en una execució acurada i un compromís profund amb la qualitat. Si això et ressona, ens encantaria saber més sobre el que estàs creant.</p>
       <div class="actions">
         <a class="btn btn-primary" href="mailto:hola@digitallestudi.com?subject=Iniciar%20un%20projecte" data-ca="Iniciar un projecte" data-es="Iniciar un proyecto">Iniciar un projecte</a>
         <a class="btn btn-ghost" href="mailto:hola@digitallestudi.com?subject=Missatge%20r%C3%A0pid" data-ca="Missatge ràpid" data-es="Mensaje rápido">Missatge ràpid</a>
@@ -115,7 +119,7 @@
       <h2 class="label" id="rev-title" data-ca="Ressenyes de Google" data-es="Reseñas de Google">Ressenyes de Google</h2>
       <div class="reviews" tabindex="0" aria-label="Ressenyes de Google">
         <article class="review">
-          <p class="review-text">[Text de la ressenya]</p>
+          <p class="review-text">"No podría haber tenido una mejor experiencia. Ha sido un auténtico placer trabajar con ellos en mi proyecto de agencia de viajes. Su atención al detalle, la creatividad en el diseño, la profesionalidad y la cercanía del equipo han superado todas mis expectativas. Los recomiendo sin dudar a cualquiera que quiera hacer realidad sus proyectos con resultados de máxima calidad."</p>
           <footer><strong>Gonzalo Gastón</strong><span>Founder · Travel with Gastón</span></footer>
         </article>
         <article class="review">
